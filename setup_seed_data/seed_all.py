@@ -124,7 +124,7 @@ def seed_mongodb():
         documents = []
         
         for md_file in docs_path.rglob("*.md"):
-            content = md_file.read_text()
+            content = md_file.read_text(encoding="utf-8")
             category = md_file.parent.name  # policies, engineering, product
             
             documents.append({
