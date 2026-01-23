@@ -1,0 +1,40 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+.venv
+venv
+.eggs
+*.egg-info
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+.cursor
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.egg
+dist
+build
+
+# Local environment (will be set via docker-compose)
+setup_environment/.env
+
+# Jupyter checkpoints
+.ipynb_checkpoints
+
+# Test cache
+.pytest_cache
+.mypy_cache
+.ruff_cache
+

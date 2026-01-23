@@ -31,6 +31,38 @@ services:
       timeout: 5s
       retries: 5
 
+  # Python app container - alternative to local uv installation
+  app:
+    build:
+      context: ..
+      dockerfile: setup_environment/Dockerfile
+    container_name: acme-app
+    ports:
+      - "8888:8888"
+    volumes:
+      # Mount project for live editing (notebooks, code changes)
+      - ..:/app
+      # Persist uv cache for faster rebuilds
+      - uv_cache:/root/.cache/uv
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=acme
+      - POSTGRES_PASSWORD=acme
+      - POSTGRES_DB=acme
+      - MONGODB_URI=mongodb://mongodb:27017
+      - MONGODB_DB=acme
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+
 volumes:
   postgres_data:
   mongodb_data:
+  uv_cache:
