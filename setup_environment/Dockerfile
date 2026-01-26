@@ -34,3 +34,4 @@ ENV PYTHONUNBUFFERED=1
 # Default command: run Jupyter notebook server
 CMD ["uv", "run", "jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
 
+
