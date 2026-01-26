@@ -13,12 +13,11 @@ from typing import Any
 
 import yaml
 
-# Add parent directories to path for imports
+# Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent / "setup_agent"))
-sys.path.insert(0, str(Path(__file__).parent.parent / "stage_1_golden_sets"))
 
 from orchestrator import ask_acme_with_trace
-from evaluator import check_tools, check_must_contain, check_must_not_contain
+from eval_checks import check_tools, check_must_contain, check_must_not_contain
 
 
 @dataclass
